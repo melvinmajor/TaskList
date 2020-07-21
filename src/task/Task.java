@@ -2,6 +2,7 @@ package task;
 
 /**
  * The task class
+ * 
  * @author Melvin Campos Casares
  *
  */
@@ -17,6 +18,7 @@ public class Task {
 
 	/**
 	 * Get the ID of the task
+	 * 
 	 * @return the ID (int) of the task
 	 */
 	public int getId() {
@@ -25,6 +27,7 @@ public class Task {
 
 	/**
 	 * Get the description of the task
+	 * 
 	 * @return the description (String) of the task
 	 */
 	public String getDescription() {

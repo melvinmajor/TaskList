@@ -7,7 +7,9 @@ import java.util.Scanner;
 import commands.AddCommand;
 import commands.Command;
 import commands.DeleteCommand;
+import commands.HelpCommand;
 import commands.ListCommand;
+import storage.Memory;
 
 /**
  * @author Melvin Campos Casares
@@ -15,10 +17,21 @@ import commands.ListCommand;
 public class Main {
 	private static List<Command> commands = new ArrayList<>();
 	public static List<Task> tasks = new ArrayList<>();
+	public static Memory memory = new Memory();
 
 	public static void main(String[] args) {
+		Runnable runnable = new Runnable() {
+			@Override
+			public void run() {
+				memory.load();
+			}
+		};
+
+		new Thread(runnable).start();
+
 		System.out.println("Hi!\nWelcome to TaskList.");
-		System.out.println(">>> Here are the commands: add - list - delete\n");
+		System.out.println(">>> Here are the commands: add - list - delete - exit\n");
+		System.out.println("If you need any explanation for available commands, type `help`");
 
 		Scanner scanner = new Scanner(System.in);
 		boolean exit = false;
@@ -60,5 +73,6 @@ public class Main {
 		commands.add(new AddCommand());
 		commands.add(new ListCommand());
 		commands.add(new DeleteCommand());
+		commands.add(new HelpCommand());
 	}
 }

@@ -30,3 +30,6 @@ hs_err_pid*
 # Eclipse IDE specific files
 .classpath
 .project
+
+# Specific for this project
+TaskList-data.txt

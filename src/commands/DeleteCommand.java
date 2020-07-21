@@ -7,6 +7,7 @@ import task.Task;
 
 /**
  * Command which deletes a task
+ * 
  * @author Melvin Campos Casares
  *
  */
@@ -32,6 +33,7 @@ public class DeleteCommand implements Command {
 				}
 			}
 			if (Main.tasks.remove(taskDelete)) {
+				Main.memory.save(Main.tasks);
 				System.out.println("Done!");
 			}
 		}

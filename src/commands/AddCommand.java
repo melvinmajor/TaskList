@@ -26,6 +26,7 @@ public class AddCommand implements Command {
 			} else {
 				Task task = new Task(description);
 				Main.tasks.add(task);
+				Main.memory.save(Main.tasks);
 			}
 		}
 		System.out.println("Done!");
