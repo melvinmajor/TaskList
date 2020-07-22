@@ -60,6 +60,13 @@ public class Main {
 		scanner.close(); // otherwise, memory leak
 	}
 
+	/**
+	 * Method used to check which command has been entered by the user. If the
+	 * command is valid, the corresponding class is called and used.
+	 * 
+	 * @param inputCommand command entered by the user
+	 * @return if valid, run the corresponding class. If not valid, returns nothing.
+	 */
 	private static Command getCommand(String inputCommand) {
 		for (Command command : commands) {
 			if (command.description().equals(inputCommand)) {
@@ -69,6 +76,9 @@ public class Main {
 		return null;
 	}
 
+	/**
+	 * Method used to list all available commands
+	 */
 	private static void fillCommands() {
 		commands.add(new AddCommand());
 		commands.add(new ListCommand());
