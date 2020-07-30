@@ -40,4 +40,8 @@ public class DeleteCommand implements Command {
 
 	}
 
+	public static String usage() {
+		return "Delete a a task by showing you all tasks with specific ID and by asking you which ID you want to delete";
+	}
+
 }

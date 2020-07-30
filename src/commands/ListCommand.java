@@ -11,7 +11,6 @@ import task.Task;
  */
 public class ListCommand implements Command {
 
-	@Override
 	public String description() {
 		return "list";
 	}
@@ -21,6 +20,10 @@ public class ListCommand implements Command {
 		for (Task task : Main.tasks) {
 			System.out.println(task);
 		}
+	}
+
+	public static String usage() {
+		return "Lists all tasks";
 	}
 
 }
