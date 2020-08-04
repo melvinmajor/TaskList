@@ -18,9 +18,12 @@ The application has to:
 * has at least one inheritance used wisely,
 * has at least one interface that is used wisely.
 
+Feel free to read the Wiki, written in French: [TaskList Wiki!](https://github.com/melvinmajor/TaskList/wiki/Accueil)
+
 ## Built with
 
-* Built with [Eclipse](https://www.eclipse.org) - A free and open-source IDE
+* Built with [Eclipse](https://www.eclipse.org) - Free and open-source IDE
+* _OpenJDK 14_ from [AdoptOpenJDK](https://adoptopenjdk.net/) used - Free and open-source binaries and scripts for Java
 
 ## License
 
