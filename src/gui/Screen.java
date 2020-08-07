@@ -13,8 +13,11 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTable;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 @SuppressWarnings("serial")
 public class Screen extends JFrame {
@@ -59,6 +62,15 @@ public class Screen extends JFrame {
 		setJMenuBar(menuBar);
 
 		JButton btnNewButton = new JButton("Add");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String description = JOptionPane.showInputDialog(getParent(), "Insert a description:",
+						"Insert here your task");
+				// Used for debug:
+				// System.out.println(description);
+			}
+		});
 		btnNewButton.setFont(new Font("Roboto", Font.ITALIC, 12));
 		btnNewButton.setToolTipText("Add a new task");
 		menuBar.add(btnNewButton);
