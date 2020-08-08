@@ -15,6 +15,8 @@ import javax.swing.JTable;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -24,6 +26,11 @@ public class Screen extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
+	
+	// Default Table Model set up with columnNames and data
+	private String[] columnNames = { "Task" };
+	private Object[][] data = { { null }, { null }, { null }, { null } };
+	private TableModel model = new DefaultTableModel(data, columnNames);
 
 	/**
 	 * Launch the application.
@@ -43,6 +50,7 @@ public class Screen extends JFrame {
 					frame.setSize(450, 300);
 					frame.setForeground(Color.black);
 					frame.setBackground(Color.lightGray);
+					frame.setFont(new Font("Roboto", Font.PLAIN, 12));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -61,8 +69,9 @@ public class Screen extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
-		JButton btnNewButton = new JButton("Add");
-		btnNewButton.addMouseListener(new MouseAdapter() {
+		/* Add and delete buttons*/
+		JButton addButton = new JButton("Add");
+		addButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String description = JOptionPane.showInputDialog(getParent(), "Insert a description:",
@@ -71,14 +80,20 @@ public class Screen extends JFrame {
 				// System.out.println(description);
 			}
 		});
-		btnNewButton.setFont(new Font("Roboto", Font.ITALIC, 12));
-		btnNewButton.setToolTipText("Add a new task");
-		menuBar.add(btnNewButton);
+		addButton.setFont(new Font("Roboto", Font.ITALIC, 12));
+		addButton.setToolTipText("Add a new task");
+		menuBar.add(addButton);
 
-		JButton btnNewButton_1 = new JButton("Delete");
-		btnNewButton_1.setFont(new Font("Roboto", Font.ITALIC, 12));
-		btnNewButton_1.setToolTipText("Delete a specific task");
-		menuBar.add(btnNewButton_1);
+		JButton deleteButton = new JButton("Delete");
+		deleteButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+			}
+		});
+		deleteButton.setFont(new Font("Roboto", Font.ITALIC, 12));
+		deleteButton.setToolTipText("Delete a specific task");
+		menuBar.add(deleteButton);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -89,11 +104,12 @@ public class Screen extends JFrame {
 		gbl_contentPane.rowWeights = new double[] { 1.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
 
-		table = new JTable();
+		/* Table used to show all tasks */
+		JTable table = new JTable(model);
+		table.setFillsViewportHeight(true);
+		table.setEnabled(false);
 		table.setFont(new Font("Roboto", Font.PLAIN, 12));
 		table.setToolTipText("All registered tasks are listed here");
-		table.setModel(new DefaultTableModel(new Object[][] { { null }, { null }, { null }, { null }, },
-				new String[] { "Task" }));
 		GridBagConstraints gbc_table = new GridBagConstraints();
 		gbc_table.gridwidth = 2;
 		gbc_table.gridheight = 5;
