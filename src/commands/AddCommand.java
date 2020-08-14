@@ -7,6 +7,7 @@ import task.Task;
 
 /**
  * Command which adds a new task
+ * 
  * @author Melvin Campos Casares
  *
  */
@@ -30,6 +31,10 @@ public class AddCommand implements Command {
 			}
 		}
 		System.out.println("Done!");
+	}
+
+	public static String usage() {
+		return "Creates a new task by asking you for a description";
 	}
 
 }

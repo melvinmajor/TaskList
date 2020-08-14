@@ -1,7 +1,9 @@
 package task;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import commands.AddCommand;
@@ -15,7 +17,7 @@ import storage.Memory;
  * @author Melvin Campos Casares
  */
 public class Main {
-	private static List<Command> commands = new ArrayList<>();
+	private static Map<String, Command> commands = new HashMap<>();
 	public static List<Task> tasks = new ArrayList<>();
 	public static Memory memory = new Memory();
 
@@ -68,21 +70,20 @@ public class Main {
 	 * @return if valid, run the corresponding class. If not valid, returns nothing.
 	 */
 	private static Command getCommand(String inputCommand) {
-		for (Command command : commands) {
-			if (command.description().equals(inputCommand)) {
-				return command;
-			}
-		}
-		return null;
+		return commands.get(inputCommand);
 	}
 
 	/**
 	 * Method used to list all available commands
 	 */
 	private static void fillCommands() {
-		commands.add(new AddCommand());
-		commands.add(new ListCommand());
-		commands.add(new DeleteCommand());
-		commands.add(new HelpCommand());
+		var addCmd = new AddCommand();
+		var lsCmd = new ListCommand();
+		var rmCmd = new DeleteCommand();
+		var helpCmd = new HelpCommand();
+		commands.put(addCmd.description(), addCmd);
+		commands.put(lsCmd.description(), lsCmd);
+		commands.put(rmCmd.description(), rmCmd);
+		commands.put(helpCmd.description(), helpCmd);
 	}
 }
