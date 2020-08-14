@@ -30,7 +30,6 @@ public class Main {
 		};
 
 		new Thread(runnable).start();
-
 		System.out.println("Hi!\nWelcome to TaskList.");
 		System.out.println(">>> Here are the commands: add - list - delete - exit\n");
 		System.out.println("If you need any explanation for available commands, type `help`");
