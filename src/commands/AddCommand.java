@@ -22,7 +22,7 @@ public class AddCommand implements Command {
 		System.out.print("Insert a description>");
 		if (scanner.hasNextLine()) {
 			String description = scanner.nextLine();
-			if (description.isEmpty()) {
+			if (description == null || description.isEmpty()) {
 				System.out.println("Sorry... Please try again ;-)\n");
 			} else {
 				Task task = new Task(description);

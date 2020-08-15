@@ -1,5 +1,7 @@
 package commands;
 
+import javax.swing.JOptionPane;
+
 import task.Main;
 import task.Task;
 
@@ -19,10 +21,15 @@ public class AddCommandGui extends AddCommand {
 		this.description = description;
 		System.out.println(description);
 
-		Task task = new Task(this.description);
-		Main.tasks.add(task);
+		if (description == null || description.isEmpty()) {
+			System.out.println("Sorry... Please try again ;-)\n");
+			JOptionPane.showMessageDialog(null, "Sorry... Please try again ;-)");
+		} else {
+			Task task = new Task(this.description);
+			Main.tasks.add(task);
 
-		Main.memory.save(Main.tasks);
+			Main.memory.save(Main.tasks);
+		}
 
 		System.out.println("Done!");
 	}

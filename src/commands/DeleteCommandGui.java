@@ -20,7 +20,7 @@ public class DeleteCommandGui extends DeleteCommand {
 		System.out.print("ID to delete> ");
 		this.id = id;
 		System.out.println(id);
-		
+
 		for (Task task : Main.tasks) {
 			if (task.getId() == id) {
 				taskDelete = task;

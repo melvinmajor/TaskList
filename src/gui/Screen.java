@@ -139,14 +139,15 @@ public class Screen extends JFrame {
 		menuBar.add(addButton);
 
 		JButton deleteButton = new JButton("Delete");
-		deleteButton.addActionListener( new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            	String listOfAllTasksWithIDs = "";
-        		for (Task task : Main.tasks) {
-        			listOfAllTasksWithIDs += "ID: " + task.getId() + " - Description: " + task.getDescription() + "\n";
-        		}
-            	String id = JOptionPane.showInputDialog(getParent(), listOfAllTasksWithIDs + "\nInsert the ID of the task you want to delete:",
+		deleteButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String listOfAllTasksWithIDs = "";
+				for (Task task : Main.tasks) {
+					listOfAllTasksWithIDs += "ID: " + task.getId() + " - " + task.getDescription() + "\n";
+				}
+				String id = JOptionPane.showInputDialog(getParent(),
+						listOfAllTasksWithIDs + "\nInsert the ID of the task you want to delete:",
 						"Insert here the ID");
 
 				// Used for debug:
@@ -156,8 +157,8 @@ public class Screen extends JFrame {
 				if (true && table != null) /* check the result */ {
 					tableModel.fireTableDataChanged();
 				}
-            }
-        });
+			}
+		});
 		deleteButton.setFont(new Font("Roboto", Font.ITALIC, 12));
 		deleteButton.setToolTipText("Delete a specific task");
 		menuBar.add(deleteButton);
