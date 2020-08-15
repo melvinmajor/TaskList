@@ -19,11 +19,14 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import commands.AddCommandGui;
+import commands.DeleteCommandGui;
 import storage.Memory;
 import task.Main;
 import task.Task;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.lang.reflect.Array;
@@ -136,12 +139,25 @@ public class Screen extends JFrame {
 		menuBar.add(addButton);
 
 		JButton deleteButton = new JButton("Delete");
-		deleteButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		deleteButton.addActionListener( new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	String listOfAllTasksWithIDs = "";
+        		for (Task task : Main.tasks) {
+        			listOfAllTasksWithIDs += "ID: " + task.getId() + " - Description: " + task.getDescription() + "\n";
+        		}
+            	String id = JOptionPane.showInputDialog(getParent(), listOfAllTasksWithIDs + "\nInsert the ID of the task you want to delete:",
+						"Insert here the ID");
 
-			}
-		});
+				// Used for debug:
+				// System.out.println(id);
+				var DeleteGui = new DeleteCommandGui();
+				DeleteGui.execute(Integer.parseInt(id)); // this should return true if succeeded
+				if (true && table != null) /* check the result */ {
+					tableModel.fireTableDataChanged();
+				}
+            }
+        });
 		deleteButton.setFont(new Font("Roboto", Font.ITALIC, 12));
 		deleteButton.setToolTipText("Delete a specific task");
 		menuBar.add(deleteButton);
