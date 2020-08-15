@@ -14,6 +14,7 @@ import java.awt.Insets;
 import javax.swing.JTable;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -41,7 +42,7 @@ public class Screen extends JFrame {
 
 	// Default Table Model set up with columnNames and data
 	private String[] columnNames = { "Task" };
-	// private Object[][] data = { { null }, { null }, { null }, { null } };
+	private Object[][] data = { { null }, { null }, { null }, { null } };
 	// private TableModel model = new DefaultTableModel(data, columnNames);
 
 	/**
@@ -83,37 +84,28 @@ public class Screen extends JFrame {
 	 * Create the frame.
 	 */
 	public Screen() {
+		// Only in order to know the size of the TaskList, used for debug
 		int taskListSize = Main.tasks.size();
 		System.out.println("TaskList-data size: " + Main.tasks.size());
 		Object[][] data = new Array[taskListSize][];
 
-//		for(int i=0; i < Main.tasks.size(); i++) {
-//			data[i][0] = i;
-//		}
+		/* The actual table content shown on the screen */
+		AbstractTableModel tableModel = new AbstractTableModel() {
+			@Override
+			public int getRowCount() {
+				return Main.tasks.size();
+			}
 
-//		int test = 2;
-//		Object[][] data = new Array[test][];
-//		data[2][0] = "Hellnewo"; 
+			@Override
+			public int getColumnCount() {
+				return 1; // description only
+			}
 
-		TableModel model = new DefaultTableModel(data, columnNames);
-
-//		for (int i = 0; i < Main.tasks.size(); i++) {
-//			for (int j = 0; j < Main.tasks.[0]; j++) {
-//				arrStr[i][j] = "Str" + j;
-//				System.out.print(arrStr[i][j] + " ");
-//			}
-//			System.out.println("");
-//		}
-
-//		this.data = new String[]
-//		this.data[0][0] = "Test 1";
-//		this.data[0][1] = "Test 2";
-
-//		for (Task task : Main.tasks) {
-//			this.data[0][] += task.getDescription();
-//		}
-
-//		Main.tasks.forEach(task -> this.data[task][task.toString()]);
+			@Override
+			public Object getValueAt(int rowIndex, int columnIndex) {
+				return Main.tasks.get(rowIndex).getDescription();
+			}
+		};
 
 		setFont(new Font("Roboto", Font.PLAIN, 12));
 		setForeground(Color.black);
@@ -129,10 +121,14 @@ public class Screen extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				String description = JOptionPane.showInputDialog(getParent(), "Insert a description:",
 						"Insert here your task");
+
 				// Used for debug:
 				// System.out.println(description);
 				var AddGui = new AddCommandGui();
-				AddGui.execute(description);
+				AddGui.execute(description); // this should return true if succeeded
+				if (true && table != null) /* check the result */ {
+					tableModel.fireTableDataChanged();
+				}
 			}
 		});
 		addButton.setFont(new Font("Roboto", Font.ITALIC, 12));
@@ -160,7 +156,7 @@ public class Screen extends JFrame {
 		contentPane.setLayout(gbl_contentPane);
 
 		/* Table used to show all tasks */
-		JTable table = new JTable(model);
+		JTable table = new JTable(tableModel);
 		table.setFillsViewportHeight(true);
 		table.setEnabled(false);
 		table.setFont(new Font("Roboto", Font.PLAIN, 12));

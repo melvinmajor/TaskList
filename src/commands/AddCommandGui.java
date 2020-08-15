@@ -17,11 +17,11 @@ public class AddCommandGui extends AddCommand {
 		System.out.println(Main.tasks.toString());
 		System.out.print("Insert a description>");
 		this.description = description;
-		
+		System.out.println(description);
 
 		Task task = new Task(this.description);
 		Main.tasks.add(task);
-		
+
 		Main.memory.save(Main.tasks);
 
 		System.out.println("Done!");
