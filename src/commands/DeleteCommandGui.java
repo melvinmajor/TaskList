@@ -1,7 +1,5 @@
 package commands;
 
-import java.util.Scanner;
-
 import task.Main;
 import task.Task;
 
