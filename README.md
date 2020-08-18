@@ -18,7 +18,9 @@ The application has to:
 * has at least one inheritance used wisely,
 * has at least one interface that is used wisely.
 
-Feel free to read the Wiki, written in French: [TaskList Wiki!](https://github.com/melvinmajor/TaskList/wiki/Accueil)
+Feel free to read the Wiki, written in French: [TaskList Wiki!](https://github.com/melvinmajor/TaskList/wiki/Home)
+
+Javadoc is available here: [Javadoc on GitHub Pages](https://melvinmajor.github.io/TaskList/javadoc/index.html)
 
 ## Built with
 

@@ -33,6 +33,11 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The Main class running GUI view.
+ * 
+ * @author Melvin Campos Casares
+ */
 @SuppressWarnings("serial")
 public class Screen extends JFrame {
 

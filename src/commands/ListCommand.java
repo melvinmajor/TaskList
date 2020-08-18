@@ -4,7 +4,7 @@ import task.Main;
 import task.Task;
 
 /**
- * Command which lists all tasks
+ * Command which lists all tasks.
  * 
  * @author Melvin Campos Casares
  *

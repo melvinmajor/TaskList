@@ -6,7 +6,7 @@ import task.Main;
 import task.Task;
 
 /**
- * Command which adds a new task (GUI interface)
+ * Command which adds a new task (GUI interface).
  * 
  * @author Melvin Campos Casares
  *

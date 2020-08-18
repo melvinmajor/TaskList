@@ -13,7 +13,7 @@ import task.Task;
 
 /**
  * Class that ensure all tasks are saved in a .TXT file which is automatically
- * loaded on each startup of the program
+ * loaded on each startup of the program.
  * 
  * @author Melvin Campos Casares
  *

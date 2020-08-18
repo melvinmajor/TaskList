@@ -6,7 +6,7 @@ import task.Main;
 import task.Task;
 
 /**
- * Command which adds a new task
+ * Command which adds a new task.
  * 
  * @author Melvin Campos Casares
  *

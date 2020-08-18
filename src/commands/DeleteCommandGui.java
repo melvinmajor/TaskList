@@ -4,7 +4,7 @@ import task.Main;
 import task.Task;
 
 /**
- * Command which deletes a task (GUI interface)
+ * Command which deletes a task (GUI interface).
  * 
  * @author Melvin Campos Casares
  *

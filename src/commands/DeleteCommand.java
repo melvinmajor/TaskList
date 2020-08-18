@@ -6,7 +6,7 @@ import task.Main;
 import task.Task;
 
 /**
- * Command which deletes a task
+ * Command which deletes a task.
  * 
  * @author Melvin Campos Casares
  *

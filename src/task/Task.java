@@ -1,7 +1,8 @@
 package task;
 
 /**
- * The task class
+ * The Task class which ensure the structure of a task which contains a
+ * description and is related to a unique ID.
  * 
  * @author Melvin Campos Casares
  *

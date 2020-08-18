@@ -14,6 +14,8 @@ import commands.ListCommand;
 import storage.Memory;
 
 /**
+ * The Main class running CLI view.
+ * 
  * @author Melvin Campos Casares
  */
 public class Main {

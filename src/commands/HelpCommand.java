@@ -1,7 +1,7 @@
 package commands;
 
 /**
- * Command which lists a description of all available commands
+ * Command which lists a description of all available commands.
  * 
  * @author Melvin Campos Casares
  *
